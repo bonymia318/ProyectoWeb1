@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Películas y Series</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Catálogo de Películas y Series</h1>
+        <nav>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#favoritos">Favoritos</a>
+            <a href="#estadisticas">Estadísticas</a>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+
+        <section id="controles">
+            <h2>Buscar y Filtrar</h2>
+
+            <div>
+                <label for="buscar">Buscar por título:</label>
+                <input type="text" id="buscar" placeholder="Escribe el título...">
+            </div>
+
+            <div>
+                <label for="filtro-genero">Filtrar por género:</label>
+                <select id="filtro-genero">
+                    <option value="todos">Todos</option>
+                    <option value="accion">Acción</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="drama">Drama</option>
+                    <option value="terror">Terror</option>
+                    <option value="ciencia-ficcion">Ciencia Ficción</option>
+                    <option value="animacion">Animación</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar">
+                    <option value="default">Por defecto</option>
+                    <option value="anio-asc">Año (más antiguo)</option>
+                    <option value="anio-desc">Año (más reciente)</option>
+                    <option value="valoracion-desc">Valoración (mayor a menor)</option>
+                    <option value="valoracion-asc">Valoración (menor a mayor)</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS -->
+        <section id="estadisticas">
+            <h2>Estadísticas del Catálogo</h2>
+            <div class="stats">
+                <p>Total de elementos: <span id="total">0</span></p>
+                <p>Películas: <span id="total-peliculas">0</span></p>
+                <p>Series: <span id="total-series">0</span></p>
+                <p>Favoritos: <span id="total-favoritos">0</span></p>
+            </div>
+        </section>
+
+        <!-- CATALOGO -->
+        <section id="catalogo">
+            <h2>Catálogo</h2>
+            <div id="lista-peliculas" class="grid-tarjetas">
+               
+            </div>
+        </section>
+
+        <!-- FAVORITOS -->
+        <section id="favoritos">
+            <h2>Mis Favoritos</h2>
+            <div id="lista-favoritos" class="grid-tarjetas">
+                
+            </div>
+        </section>
+
+        <!-- FORMULARIO PARA AGREGAR -->
+        <section id="agregar">
+            <h2>Agregar nueva película o serie</h2>
+            <form id="form-agregar">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" required>
+
+                <label for="genero">Género:</label>
+                <select id="genero" required>
+                    <option value="accion">Acción</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="drama">Drama</option>
+                    <option value="terror">Terror</option>
+                    <option value="ciencia-ficcion">Ciencia Ficción</option>
+                    <option value="animacion">Animación</option>
+                </select>
+
+                <label for="anio">Año:</label>
+                <input type="number" id="anio" min="1900" max="2030" required>
+
+                <label for="valoracion">Valoración (1-10):</label>
+                <input type="number" id="valoracion" min="1" max="10" step="0.1" required>
+
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" required>
+                    <option value="pelicula">Película</option>
+                    <option value="serie">Serie</option>
+                </select>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" rows="3" required></textarea>
+
+                <label for="imagen">URL de la imagen:</label>
+                <input type="url" id="imagen" placeholder="https://...">
+
+                <button type="submit">Agregar</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Proyecto de Desarrollo de Aplicaciones Web - Primer Parcial</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
