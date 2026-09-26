@@ -13,20 +13,38 @@ header {
   padding: 15px;
   position: sticky;
   top: 0;
+  z-index: 100; /*la navegacion quedara encima*/
 }
+
 header h1 {
   color: #fff;
   text-align: center;
 }
 
-nav a {
+.navegacion {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.navegacion a {
   color: #fff;
   margin: 0 10px;
   text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
 }
-nav a:hover {
+
+.navegacion a:hover {
   color: rgb(87, 207, 255);
 }
+
+.principal{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
 h2 {
   border-bottom: 2px solid rgb(87, 207, 255);;
   padding-bottom: 5px;
@@ -34,6 +52,61 @@ h2 {
 section {
   margin: 30px 0;
 }
+
+section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.controles {
+    background: rgb(87, 207, 255);;
+    padding: 1.75rem 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
+    position: relative;
+    overflow: hidden;
+}
+
+.controles h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+    font-size: 1.15rem;
+    color: #222;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.controles::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    opacity: 0.7;
+}
+
+.controles  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.controles label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #222;
+}
+
 input, select, textarea {
   width: 100%;
   padding: 8px;
