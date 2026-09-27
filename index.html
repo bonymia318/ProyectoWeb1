@@ -40,6 +40,7 @@
                     <option value="terror">Terror</option>
                     <option value="ciencia-ficcion">Ciencia Ficción</option>
                     <option value="animacion">Animación</option>
+                    <option value="romance">Romance</option>
                 </select>
             </div>
 
@@ -58,26 +59,31 @@
         <!--CARRUSEL-->
         <section class="destacados">
             <div class="carrusel">
-                <article class="card-media">
-                    <img src="img/1.png" alt="Reyes" class="img">
-                </article>
-                 <article class="card-media">
-                    <img src="img/2.png" alt="Reyes" class="img">
-                </article>
-                <article class="card-media">
-                    <img src="img/3.png" alt="Reyes" class="img">
-                </article>
-                 <article class="card-media">
-                    <img src="img/4.png" alt="Reyes" class="img">
-                    <div class="card-media-overlay">
-                    </div>
-                </article>
-                 <article class="card-media">
-                    <img src="img/5.png" alt="Reyes" class="img">
-                </article>
-                 <article class="card-media">
-                    <img src="img/6.png" alt="Reyes" class="img">
-                </article>
+                <a class="card-media" href="https://www.youtube.com/watch?v=VwwQmkYBhoQ" target="_blank" rel="noopener">
+                    <img src="img/1.png" alt="Tráiler 1" class="img">
+                    <span class="btn-play"></span>
+                </a>
+                <a class="card-media" href="https://www.youtube.com/playlist?list=PL37Pj2w5rILg2sZ4_E41PYza6_UjCldpI" target="_blank" rel="noopener">
+                    <img src="img/2.png" alt="Tráiler 2" class="img">
+                    <span class="btn-play"></span>
+                </a>
+                <a class="card-media" href="https://www.youtube.com/watch?v=2N2tqGtB5is&list=PLKc3-J56_6RMcz8vWckPp1tDBKDsh8wfe&index=2" target="_blank" rel="noopener">
+                    <img src="img/3.png" alt="Tráiler 3" class="img">
+                    <span class="btn-play"></span>
+                </a>
+                <a class="card-media" href="https://www.youtube.com/watch?v=_UKNqxcVF8g" target="_blank" rel="noopener">
+                    <img src="img/4.png" alt="Tráiler 4" class="img">
+                    <div class="card-media-overlay"></div>
+                    <span class="btn-play"></span>
+                </a>
+                <a class="card-media" href="https://www.youtube.com/watch?v=5zJC9LZIZKU&list=PLYV1TYfA-JoIszc5OPlqAqWXJe7gr9Ioj&index=2" target="_blank" rel="noopener">
+                    <img src="img/5.png" alt="Tráiler 5" class="img">
+                    <span class="btn-play"></span>
+                </a>
+                <a class="card-media" href="https://www.youtube.com/watch?v=FrvQeWrhxuU&list=PLmnOisP9QDGz1mlbjiSAFjbZPt3pq9aW5&index=2" target="_blank" rel="noopener">
+                    <img src="img/6.png" alt="Tráiler 6" class="img">
+                    <span class="btn-play"></span>
+                </a>
             </div>
         </section>
 
@@ -122,6 +128,7 @@
                     <option value="terror">Terror</option>
                     <option value="ciencia-ficcion">Ciencia Ficción</option>
                     <option value="animacion">Animación</option>
+                    <option value="romance">Romance</option>
                 </select>
 
                 <label for="anio">Año:</label>
@@ -147,6 +154,18 @@
         </section>
 
     </main>
+
+     <div id="modal-detalle" class="modal oculto" onclick="cerrarModalSiFondo(event)">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
+            <img id="modal-imagen" src="" alt="">
+            <div class="modal-info">
+                <h2 id="modal-titulo"></h2>
+                <p id="modal-meta" class="modal-meta"></p>
+                <p id="modal-descripcion"></p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>Proyecto de Desarrollo de Aplicaciones Web - Primer Parcial</p>

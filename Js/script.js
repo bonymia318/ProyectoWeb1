@@ -271,9 +271,7 @@ let catalogo = [
 ]
 let siguienteId = catalogo.length + 1; // lo usaremos cuando agregues nuevas desde el formulario
 
-// ================================
 // 2. FUNCIONES DE PINTADO
-// ================================
 function renderCatalogo(lista) {
     const contenedor = document.getElementById("lista-peliculas");
     contenedor.innerHTML = "";
@@ -285,10 +283,12 @@ function renderCatalogo(lista) {
         tarjeta.setAttribute("data-genero", peli.genero);
         tarjeta.setAttribute("data-tipo", peli.tipo);
         tarjeta.innerHTML = `
-            <img src="${peli.imagen}" alt="${peli.titulo}">
-            <div class="tarjeta-info">
-                <h3>${peli.titulo}</h3>
-                <p class="genero">${peli.genero}</p>
+            <div class="tarjeta-click" onclick="verDetalle(${peli.id})">
+                <img src="${peli.imagen}" alt="${peli.titulo}">
+                <div class="tarjeta-info">
+                    <h3>${peli.titulo}</h3>
+                    <p class="genero">${peli.genero}</p>
+                </div>
             </div>
             <div class="acciones">
                 <button class="btn-icono" title="${peli.favorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}" onclick="toggleFavorito(${peli.id})">${peli.favorito ? "★" : "☆"}</button>
@@ -317,10 +317,12 @@ function renderFavoritos() {
         const tarjeta = document.createElement("article");
         tarjeta.className = "tarjeta";
         tarjeta.innerHTML = `
-            <img src="${peli.imagen}" alt="${peli.titulo}">
-            <div class="tarjeta-info">
-                <h3>${peli.titulo}</h3>
-                <p class="genero">${peli.genero}</p>
+            <div class="tarjeta-click" onclick="verDetalle(${peli.id})">
+                <img src="${peli.imagen}" alt="${peli.titulo}">
+                <div class="tarjeta-info">
+                    <h3>${peli.titulo}</h3>
+                    <p class="genero">${peli.genero}</p>
+                </div>
             </div>
             <div class="acciones">
                 <button class="btn-icono" title="Quitar de favoritos" onclick="toggleFavorito(${peli.id})">★</button>
@@ -341,9 +343,36 @@ function actualizarEstadisticas() {
     document.getElementById("total-favoritos").textContent = favoritos;
 }
 
-// ================================
+// 2b. MODAL DE DETALLES
+function verDetalle(id) {
+    const peli = catalogo.find(function (p) { return p.id === id; });
+    if (!peli) return;
+
+    document.getElementById("modal-imagen").src = peli.imagen;
+    document.getElementById("modal-imagen").alt = peli.titulo;
+    document.getElementById("modal-titulo").textContent = peli.titulo;
+    document.getElementById("modal-meta").textContent =
+        peli.genero + " · " + peli.anio + " · ⭐ " + peli.valoracion;
+    document.getElementById("modal-descripcion").textContent = peli.descripcion;
+
+    document.getElementById("modal-detalle").classList.remove("oculto");
+}
+
+function cerrarModal() {
+    document.getElementById("modal-detalle").classList.add("oculto");
+}
+
+function cerrarModalSiFondo(evento) {
+    if (evento.target.id === "modal-detalle") {
+        cerrarModal();
+    }
+}
+
+document.addEventListener("keydown", function (evento) {
+    if (evento.key === "Escape") cerrarModal();
+});
+
 // 3. BUSCAR, FILTRAR Y ORDENAR (una sola versión, no anidada)
-// ================================
 function filtrarYOrdenar() {
     const textoBusqueda = document.getElementById("buscar").value.trim().toLowerCase();
     const generoSeleccionado = document.getElementById("filtro-genero").value;
@@ -368,9 +397,7 @@ function filtrarYOrdenar() {
     renderCatalogo(resultado);
 }
 
-// ================================
 // 4. ELIMINAR Y FAVORITOS
-// ================================
 function eliminarPelicula(id) {
     const confirmar = confirm("¿Seguro que quieres eliminar esta película?");
     if (!confirmar) return;
@@ -393,9 +420,7 @@ function toggleFavorito(id) {
     guardarEnLocalStorage();
 }
 
-// ================================
 // 5. localStorage
-// ================================
 function guardarEnLocalStorage() {
     localStorage.setItem("catalogoPeliculas", JSON.stringify(catalogo));
 }
@@ -408,9 +433,7 @@ function cargarDeLocalStorage() {
     }
 }
 
-// ================================
 // 6. FORMULARIO PARA AGREGAR
-// ================================
 const formAgregar = document.getElementById("form-agregar");
 
 formAgregar.addEventListener("submit", function (evento) {
@@ -443,7 +466,7 @@ formAgregar.addEventListener("submit", function (evento) {
 
     catalogo.push(nuevaPelicula);
     siguienteId++;
-    guardarEnLocalStorage(); // ← esto era lo que faltaba
+    guardarEnLocalStorage();
 
     formAgregar.reset();
     document.getElementById("buscar").value = "";
