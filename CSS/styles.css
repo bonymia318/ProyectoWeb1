@@ -156,6 +156,50 @@ section h2 {
     display: block;
 }
 
+.grid-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.2rem;
+}
+
+.tarjeta {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: #eee;
+}
+
+.tarjeta h3 {
+    font-size: 1rem;
+    padding: 0.7rem 0.8rem 0.2rem;
+    color: #222;
+}
+
+.tarjeta p.genero {
+    font-size: 0.8rem;
+    padding: 0 0.8rem 0.8rem;
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #666;
+}
+
 input, select, textarea {
   width: 100%;
   padding: 8px;
@@ -173,4 +217,12 @@ button {
 }
 button:hover {
   background: rgb(87, 207, 255);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: #222;
+    color: #ccc;
+    font-size: 0.85rem;
 }
