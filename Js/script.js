@@ -286,13 +286,17 @@ function renderCatalogo(lista) {
         tarjeta.setAttribute("data-tipo", peli.tipo);
         tarjeta.innerHTML = `
             <img src="${peli.imagen}" alt="${peli.titulo}">
-            <h3>${peli.titulo}</h3>
-            <p class="genero">${peli.genero}</p>
-            <button onclick="toggleFavorito(${peli.id})">${peli.favorito ? "★ Quitar" : "☆ Favorito"}</button>
-            <button onclick="eliminarPelicula(${peli.id})">Eliminar</button>`;
+            <div class="tarjeta-info">
+                <h3>${peli.titulo}</h3>
+                <p class="genero">${peli.genero}</p>
+            </div>
+            <div class="acciones">
+                <button class="btn-icono" title="${peli.favorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}" onclick="toggleFavorito(${peli.id})">${peli.favorito ? "★" : "☆"}</button>
+                <button class="btn-eliminar" onclick="eliminarPelicula(${peli.id})">Eliminar</button>
+            </div>`;
         contenedor.appendChild(tarjeta);
     }
-    actualizarEstadisticas(); 
+    actualizarEstadisticas();
 }
 
 function renderFavoritos() {
@@ -314,10 +318,13 @@ function renderFavoritos() {
         tarjeta.className = "tarjeta";
         tarjeta.innerHTML = `
             <img src="${peli.imagen}" alt="${peli.titulo}">
-            <h3>${peli.titulo}</h3>
-            <p class="genero">${peli.genero}</p>
-            <button onclick="toggleFavorito(${peli.id})">★ Quitar de favoritos</button>
-        `;
+            <div class="tarjeta-info">
+                <h3>${peli.titulo}</h3>
+                <p class="genero">${peli.genero}</p>
+            </div>
+            <div class="acciones">
+                <button class="btn-icono" title="Quitar de favoritos" onclick="toggleFavorito(${peli.id})">★</button>
+            </div>`;
         contenedor.appendChild(tarjeta);
     }
 }
