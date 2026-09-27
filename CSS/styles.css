@@ -226,3 +226,34 @@ footer {
     color: #ccc;
     font-size: 0.85rem;
 }
+/* Accesibilidad: se ve claro qué elemento está seleccionado con Tab */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 3px solid rgb(87, 207, 255);
+    outline-offset: 2px;
+}
+
+button {
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive para pantallas chicas */
+@media (max-width: 600px) {
+    .controles {
+        grid-template-columns: 1fr;
+    }
+    .card-media {
+        flex: 0 0 100vw;
+    }
+    .grid-tarjetas {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    header h1 {
+        font-size: 1.3rem;
+    }
+}
