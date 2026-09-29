@@ -352,7 +352,8 @@ function verDetalle(id) {
     document.getElementById("modal-imagen").alt = peli.titulo;
     document.getElementById("modal-titulo").textContent = peli.titulo;
     document.getElementById("modal-meta").textContent =
-        peli.genero + " · " + peli.anio + " · ⭐ " + peli.valoracion;
+        (peli.tipo === "serie" ? "Serie" : "Película") + " · " +
+        peli.genero + " · " + peli.anio + " · ⭐ " + peli.valoracion + "/10";
     document.getElementById("modal-descripcion").textContent = peli.descripcion;
 
     document.getElementById("modal-detalle").classList.remove("oculto");
